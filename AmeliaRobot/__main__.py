@@ -680,7 +680,7 @@ def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
-            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "Yes I'm alive 💃")
+            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "Yes I'm alive✅")
         except Unauthorized:
             LOGGER.warning(
                 "Bot isnt able to send message to support_chat, go and check!"
@@ -688,13 +688,13 @@ def main():
         except BadRequest as e:
             LOGGER.warning(e.message)
 
-    test_handler = CommandHandler("test", test)
-    start_handler = CommandHandler("start", start)
+    test_handler = CommandHandler("t", test)
+    start_handler = CommandHandler("s", start)
 
-    help_handler = CommandHandler("help", get_help)
+    help_handler = CommandHandler("h", get_help)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_.*")
 
-    settings_handler = CommandHandler("settings", get_settings)
+    settings_handler = CommandHandler("set", get_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
     about_callback_handler = CallbackQueryHandler(amelia_about_callback, pattern=r"amelia_")
